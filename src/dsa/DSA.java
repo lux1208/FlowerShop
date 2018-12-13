@@ -30,14 +30,14 @@ public class DSA {
  
         /*Testing*/
         Order PastOrder;
-        Date myDate = parseDate("2018-12-11");
+        Date myDate = parseDate("2018-12-13");
         PastOrder = new Order("P001","dasdasd",myDate,"14:30","20.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P002","dasdasd",myDate,"15:30","40.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P003","dasdasd",myDate,"16:30","30.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
-        Date myDate1 = parseDate("2018-12-11");
+        Date myDate1 = parseDate("2018-12-14");
         PastOrder = new Order("P004","dasdasd",myDate1,"15:30","20.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P005","dasdasd",myDate1,"16:30","20.00","      -       ","      -       ","      -       ","Unpick");
@@ -266,7 +266,7 @@ public class DSA {
                 }
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
             System.out.println();
-            System.out.println("Select one of the Order to proceed payment");
+            System.out.println("Select one of the Order to proceed : ");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
             selection = manageSelectionError();
@@ -623,7 +623,7 @@ public class DSA {
         System.out.println("--------|All Order|--------");
         System.out.println("--------|All Pick-up Order|--------");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("Order ID\tDetails\t\tCollect Time\tAmount To Paid\tAddress\t\tDate Picked Up\t\tTime Picked Up\t\tOrder Status");
+        System.out.println("Order ID\tDetails\t\tCollect Time\tAmount To Paid\t\t   Address\t\tDate Picked Up\t\tTime Picked Up\t\tOrder Status");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
             for(int i = 0;i < OrderList.size();i++){
                 System.out.println(OrderList.get(i));
@@ -631,7 +631,7 @@ public class DSA {
         System.out.println();
         System.out.println("--------|All Delivery Order|--------");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("Order ID\tDetails\t\tCollect Time\tAmount To Paid\tAddress\t\tDate Picked Up\t\tTime Picked Up\t\tOrder Status");
+        System.out.println("Order ID\tDetails\t\tCollect Time\tAmount To Paid\t\t   Address\t\tDate Picked Up\t\tTime Picked Up\t\tOrder Status");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
             for(int i = 0;i < DeliveryList.size();i++){
                 System.out.println(DeliveryList.get(i));
