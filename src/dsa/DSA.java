@@ -30,14 +30,14 @@ public class DSA {
  
         /*Testing*/
         Order PastOrder;
-        Date myDate = parseDate("2018-12-16");
+        Date myDate = parseDate("2018-12-13");
         PastOrder = new Order("P001","dasdasd",myDate,"14:30","20.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P002","dasdasd",myDate,"15:30","40.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P003","dasdasd",myDate,"16:30","30.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
-        Date myDate1 = parseDate("2018-12-17");
+        Date myDate1 = parseDate("2018-12-14");
         PastOrder = new Order("P004","dasdasd",myDate1,"15:30","20.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P005","dasdasd",myDate1,"16:30","20.00","      -       ","      -       ","      -       ","Unpick");
@@ -46,7 +46,7 @@ public class DSA {
         OrderList.add(PastOrder);
         PastOrder = new Order("P007","dasdasd",myDate1,"18:30","20.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
-        Date myDate2 = parseDate("2018-12-16");
+        Date myDate2 = parseDate("2018-12-12");
         PastOrder = new Order("P008","dasdasd",myDate2,"11:30","20.00","      -       ","      -       ","      -       ","Unpick");
         OrderList.add(PastOrder);
         PastOrder = new Order("P009","dasdasd",myDate2,"12:30","20.00","      -       ","      -       ","      -       ","Unpick");
@@ -618,7 +618,7 @@ public class DSA {
         return OrderDList;
     }
     
-    private static void ViewAllOrder() {
+     private static void ViewAllOrder() {
         System.out.println();
         System.out.println("--------|All Order|--------");
         System.out.println("--------|All Pick-up Order|--------");
