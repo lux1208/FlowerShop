@@ -79,7 +79,8 @@ public class CustomerMaintenance {
             System.out.println("[3] View All Accounts");
             System.out.println("[4] Update Account Details");
             System.out.println("[5] Delete Account");
-            System.out.println("[6] Logout");
+            System.out.println("[6] Generate Invoice");
+            System.out.println("[7] Logout");
             System.out.print("Please Select: ");
             selection = s.nextInt();
             s.nextLine();
@@ -105,6 +106,10 @@ public class CustomerMaintenance {
                     System.out.println();
                     break;
                 case 6:
+                    GenerateInvoice();
+                    System.out.println();
+                    break;
+                case 7:
                     StaffLogOut();
                     System.out.println();
                     break;
@@ -296,6 +301,173 @@ public class CustomerMaintenance {
         }
     }
 
+    public static void UpdateAcc() {
+        System.out.println("");
+        boolean found = false;
+        System.out.println("\nUpdate Account\n===============");
+        System.out.println("Please enter username!");
+        System.out.print("Username: ");
+        String username = s.nextLine();
+
+        for (int i = 0; i < ConsumerList.size(); i++) {
+            if (ConsumerList.get(i).getUsername().equals(username)) {
+                System.out.println("\nUsername found!!");
+                System.out.println("Username: " + username);
+                System.out.println("Name: " + ConsumerList.get(i).getName());
+                System.out.println("Email Address: " + ConsumerList.get(i).getEmail());
+                System.out.println("Phone Number: " + ConsumerList.get(i).getPhoneNo());
+                System.out.println("Home Address: " + ConsumerList.get(i).getAddress());
+                found = true;
+                if (found == true) {
+                    int selection;
+                    do {
+                        System.out.println("\n[1] Name");
+                        System.out.println("[2] Email Address");
+                        System.out.println("[3] Phone Number");
+                        System.out.println("[4] Home Address");
+                        System.out.print("Which one do you wish to update? :  ");
+                        selection = s.nextInt();
+                        if (selection == 1) {
+                            flush();
+                            System.out.print("Name: ");
+                            String name = s.nextLine();
+                            flush();
+                            ConsumerList.get(i).setName(name);
+                            System.out.println("Name for <" + username + "> is updated with <" + ConsumerList.get(i).getName() + ">");
+                            System.out.println("\nRedirect to main menu...");
+                            CustomerMaintenanceMenu();
+                        } else if (selection == 2) {
+                            flush();
+                            System.out.print("Email Address: ");
+                            String email = s.nextLine();
+                            flush();
+                            ConsumerList.get(i).setEmail(email);
+                            System.out.println("Email address for <" + username + "> is updated with <" + ConsumerList.get(i).getEmail() + ">");
+                            System.out.println("\nRedirect to main menu...");
+                            CustomerMaintenanceMenu();
+                        } else if (selection == 3) {
+                            flush();
+                            System.out.print("Phone number: ");
+                            String phoneNo = s.nextLine();
+                            flush();
+                            ConsumerList.get(i).setPhoneNo(phoneNo);
+                            System.out.println("Phone number for <" + username + "> is updated with <" + ConsumerList.get(i).getPhoneNo() + ">");
+                            System.out.println("\nRedirect to main menu...");
+                            CustomerMaintenanceMenu();
+                        } else if (selection == 4) {
+                            flush();
+                            System.out.print("Home Address: ");
+                            String address = s.nextLine();
+                            flush();
+                            ConsumerList.get(i).setAddress(address);
+                            System.out.println("Home address for <" + username + "> is updated with <" + ConsumerList.get(i).getAddress() + ">");
+                            System.out.println("\nRedirect to main menu...");
+                            CustomerMaintenanceMenu();
+                        } else {
+                            System.out.println("\nInvalid selection. Please reenter!!");
+                        }
+                    } while (selection != 1 || selection != 2 || selection != 3 || selection != 4);
+                }
+            }
+        }
+        if (!found) {
+            for (int i = 0; i < CorporateCustList.size(); i++) {
+                if (CorporateCustList.get(i).getUsername().equals(username)) {
+                    System.out.println("\nUsername found!!");
+                    System.out.println("Username: " + username);
+                    System.out.println("Name: " + CorporateCustList.get(i).getName());
+                    System.out.println("Email Address: " + CorporateCustList.get(i).getEmail());
+                    System.out.println("Phone Number: " + CorporateCustList.get(i).getPhoneNo());
+                    System.out.println("Corporate Name: " + CorporateCustList.get(i).getCorporateName());
+                    System.out.println("Corporate Address: " + CorporateCustList.get(i).getAddress());
+                    System.out.println("Credit Limit: " + CorporateCustList.get(i).getCreditLimit());
+                    found = true;
+                    if (found == true) {
+                        int selection;
+                        do {
+                            System.out.println("\n[1] Name");
+                            System.out.println("[2] Email Address");
+                            System.out.println("[3] Phone Number");
+                            System.out.println("[4] Corporate Name");
+                            System.out.println("[5] Corporate Address");
+                            System.out.println("[6] Credit Limit");
+                            System.out.print("Which one do you wish to update? :  ");
+                            selection = s.nextInt();
+                            if (selection == 1) {
+                                flush();
+                                System.out.print("Name: ");
+                                String name = s.nextLine();
+                                flush();
+                                CorporateCustList.get(i).setName(name);
+                                System.out.println("Name for <" + username + "> is updated with <" + CorporateCustList.get(i).getName() + ">");
+                                System.out.println("\nRedirect to main menu...");
+                                CustomerMaintenanceMenu();
+                            } else if (selection == 2) {
+                                flush();
+                                System.out.print("Email Address: ");
+                                String email = s.nextLine();
+                                flush();
+                                CorporateCustList.get(i).setEmail(email);
+                                System.out.println("Email address for <" + username + "> is updated with <" + CorporateCustList.get(i).getEmail() + ">");
+                                System.out.println("\nRedirect to main menu...");
+                                CustomerMaintenanceMenu();
+                            } else if (selection == 3) {
+                                flush();
+                                System.out.print("Phone number: ");
+                                String phoneNo = s.nextLine();
+                                flush();
+                                CorporateCustList.get(i).setPhoneNo(phoneNo);
+                                System.out.println("Phone number for <" + username + "> is updated with <" + CorporateCustList.get(i).getPhoneNo() + ">");
+                                System.out.println("\nRedirect to main menu...");
+                                CustomerMaintenanceMenu();
+                            } else if (selection == 4) {
+                                flush();
+                                System.out.print("Corporate Name: ");
+                                String cname = s.nextLine();
+                                flush();
+                                CorporateCustList.get(i).setCorporateName(cname);
+                                System.out.println("Corporate name for <" + username + "> is updated with <" + CorporateCustList.get(i).getCorporateName()+ ">");
+                                System.out.println("\nRedirect to main menu...");
+                                CustomerMaintenanceMenu();
+                            }else if(selection == 5){
+                                flush();
+                                System.out.print("Corporate Address: ");
+                                String address = s.nextLine();
+                                flush();
+                                CorporateCustList.get(i).setAddress(address);
+                                System.out.println("Corporate address for <" + username + "> is updated with <" + CorporateCustList.get(i).getAddress()+ ">");
+                                System.out.println("\nRedirect to main menu...");
+                                CustomerMaintenanceMenu();
+                            } else if(selection ==6){
+                                flush();
+                                System.out.print("Credit Limit: ");
+                                int creditLimit = s.nextInt();
+                                flush();
+                                CorporateCustList.get(i).setCreditLimit(creditLimit);
+                                System.out.println("Credit limit for <" + username + "> is updated with <" + CorporateCustList.get(i).getCreditLimit()+ ">");
+                                System.out.println("\nRedirect to main menu...");
+                                CustomerMaintenanceMenu();
+                            }else{
+                                System.out.println("\nInvalid selection. Please reenter!!");
+                            }
+                        } while (selection != 1 || selection != 2 || selection != 3 || selection != 4 || selection != 5 || selection != 6);
+                    }
+                }
+            }
+            System.out.print("\nNo search found! Search again to update?(Y?N): ");
+            char reply = s.next().charAt(0);
+            if (reply == 'Y' || reply == 'y') {
+                flush();
+                UpdateAcc();
+                flush();
+            } else {
+                flush();
+                CustomerMaintenanceMenu();
+                flush();
+            }
+        }
+    }
+
     public static void DeleteAcc() {
         System.out.println("");
         boolean found = false;
@@ -403,5 +575,15 @@ public class CustomerMaintenance {
         flush();
         System.out.println("Redirect to main menu...");
         CustomerMaintenanceMenu();
+    }
+    
+    public static void GenerateInvoice(){
+         System.out.println("\nGenerate Invoice\n================");
+         System.out.println("Please enter username!");
+         System.out.print("Username: ");
+         String username = s.nextLine();
+         
+         System.out.println("Invoice generated to <" + username + ">");
+         
     }
 }

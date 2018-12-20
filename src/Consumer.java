@@ -8,35 +8,16 @@
  *
  * @author wennshenglim
  */
-public class Customers {
-    
-    private String username, name, password, email, phoneNo, address, corporateName;
+public class Consumer {
 
-    public Customers(String username, String name, String password, String email, String phoneNo, String address) {
+    private String username, name, email, phoneNo, address;
+
+    public Consumer(String username, String name, String email, String phoneNo, String address) {
         this.username = username;
         this.name = name;
-        this.password = password;
         this.email = email;
         this.phoneNo = phoneNo;
         this.address = address;
-    }
-
-    public Customers(String username, String name, String password, String email, String phoneNo, String corporateName, String address) {
-        this.username = username;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.phoneNo = phoneNo;
-        this.corporateName = corporateName;
-        this.address = address;
-    }
-
-    public String getCorporateName() {
-        return corporateName;
-    }
-
-    public void setCorporateName(String corporateName) {
-        this.corporateName = corporateName;
     }
 
     public String getUsername() {
@@ -53,14 +34,6 @@ public class Customers {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -86,6 +59,9 @@ public class Customers {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-}
 
+    @Override
+    public String toString() {
+        return String.format("%-16s | %-20s | %-24s | %-14s | %-28s |", username, name, email, phoneNo, address);
+    }
+}
