@@ -13,11 +13,16 @@ public class CustomerMaintenance {
     static Scanner s = new Scanner(System.in);
     static List<Consumer> ConsumerList = new ArrayList<Consumer>();
     static List<CorporateCust> CorporateCustList = new ArrayList<CorporateCust>();
+    static List<InvoiceData> InvoiceDataList = new ArrayList<InvoiceData>();
     static List<Staff> StaffList = new ArrayList<Staff>();
     static Staff staffLoggedIn;
 
     public static List<Consumer> getConsumerList() {
         return ConsumerList;
+    }
+
+    public static List<InvoiceData> getInvoiceDataList() {
+        return InvoiceDataList;
     }
 
     public static List<CorporateCust> getCorporateCustList() {
@@ -35,6 +40,12 @@ public class CustomerMaintenance {
         CorporateCustList.add(corporateCust2);
         Staff staff = new Staff("admin", "FlowerShop", "admin", "0134789658");
         StaffList.add(staff);
+        InvoiceData data1 = new InvoiceData("wennshenglim", "F0001", "Red Rose", "Rose", 2, 100.00);
+        InvoiceData data2 = new InvoiceData("wennshenglim", "F0003", "Green Rose", "Rose", 2, 20.00);
+        InvoiceData data3 = new InvoiceData("waichong", "F0005", "Green Rose", "Rose", 2, 20.00);
+        InvoiceDataList.add(data1);
+        InvoiceDataList.add(data2);
+        InvoiceDataList.add(data3);
         LogInMenu();
     }
 
@@ -426,28 +437,28 @@ public class CustomerMaintenance {
                                 String cname = s.nextLine();
                                 flush();
                                 CorporateCustList.get(i).setCorporateName(cname);
-                                System.out.println("Corporate name for <" + username + "> is updated with <" + CorporateCustList.get(i).getCorporateName()+ ">");
+                                System.out.println("Corporate name for <" + username + "> is updated with <" + CorporateCustList.get(i).getCorporateName() + ">");
                                 System.out.println("\nRedirect to main menu...");
                                 CustomerMaintenanceMenu();
-                            }else if(selection == 5){
+                            } else if (selection == 5) {
                                 flush();
                                 System.out.print("Corporate Address: ");
                                 String address = s.nextLine();
                                 flush();
                                 CorporateCustList.get(i).setAddress(address);
-                                System.out.println("Corporate address for <" + username + "> is updated with <" + CorporateCustList.get(i).getAddress()+ ">");
+                                System.out.println("Corporate address for <" + username + "> is updated with <" + CorporateCustList.get(i).getAddress() + ">");
                                 System.out.println("\nRedirect to main menu...");
                                 CustomerMaintenanceMenu();
-                            } else if(selection ==6){
+                            } else if (selection == 6) {
                                 flush();
                                 System.out.print("Credit Limit: ");
                                 int creditLimit = s.nextInt();
                                 flush();
                                 CorporateCustList.get(i).setCreditLimit(creditLimit);
-                                System.out.println("Credit limit for <" + username + "> is updated with <" + CorporateCustList.get(i).getCreditLimit()+ ">");
+                                System.out.println("Credit limit for <" + username + "> is updated with <" + CorporateCustList.get(i).getCreditLimit() + ">");
                                 System.out.println("\nRedirect to main menu...");
                                 CustomerMaintenanceMenu();
-                            }else{
+                            } else {
                                 System.out.println("\nInvalid selection. Please reenter!!");
                             }
                         } while (selection != 1 || selection != 2 || selection != 3 || selection != 4 || selection != 5 || selection != 6);
@@ -576,14 +587,40 @@ public class CustomerMaintenance {
         System.out.println("Redirect to main menu...");
         CustomerMaintenanceMenu();
     }
-    
-    public static void GenerateInvoice(){
-         System.out.println("\nGenerate Invoice\n================");
-         System.out.println("Please enter username!");
-         System.out.print("Username: ");
-         String username = s.nextLine();
-         
-         System.out.println("Invoice generated to <" + username + ">");
-         
+
+    public static void GenerateInvoice() {
+        boolean found = false;
+        System.out.println("\nGenerate Invoice\n================");
+        System.out.println("Please enter username!");
+        System.out.print("Username: ");
+        String username = s.nextLine();
+        int indexFlower = 0;
+        double price = 0;
+        for (int i = 0; i < InvoiceDataList.size(); i++) {
+            if (InvoiceDataList.get(i).getUsername().equals(username)) {
+                found = true;
+            }
+        }
+        if (found == true) {
+            System.out.println("\nInvoice generated to <" + username + ">");
+            System.out.println("+-----+------------------+----------------------+----------------------+----------------------+----------------------+");
+            System.out.format("| %s | %-16s | %-20s | %-20s | %-20s | %-20s |\n", "No.", "Flower ID", "Flower Name", "Flower Type", "Quantity", "Price(RM)");
+            System.out.println("+-----+------------------+----------------------+----------------------+----------------------+----------------------+");
+            for (int i = 0; i < InvoiceDataList.size(); i++) {
+                if (InvoiceDataList.get(i).getUsername().equals(username)) {
+                    System.out.format("| %-3d | %s\n", ++indexFlower, InvoiceDataList.get(i));
+                    price = price + InvoiceDataList.get(i).getPrice();
+                }
+            }
+            System.out.println("+-----+------------------+----------------------+----------------------+----------------------+----------------------+");
+            System.out.format("| %s | %-16s | %-20s | %-20s | %-20s | %-20s |\n", "   ", "", "", "", "Total Price(RM):", price);
+            System.out.println("+-----+------------------+----------------------+----------------------+----------------------+----------------------+");
+            flush();
+            CustomerMaintenanceMenu();
+        } else {
+            System.out.println("\nNo invoice found!!\nRedirect to main menu...");
+            CustomerMaintenanceMenu();
+        }
+
     }
 }
